@@ -1,7 +1,6 @@
 import React from 'react';
-import { StyleSheet, SafeAreaView, View, ImageBackground } from 'react-native';
+import { StyleSheet, SafeAreaView, View, ImageBackground, StatusBar } from 'react-native';
 
-import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
 
@@ -10,7 +9,7 @@ import { Store } from './redux/store'
 
 import Main from "~/components/configurator/Main"
 import FinalPanel from "~/components/configurator/final/FinalPanel"
-import { Ionicons } from '@expo/vector-icons';
+import Nav from "~/components/global/Nav"
 
 const Background = require("~/assets/images/background.jpg")
 
@@ -30,8 +29,7 @@ export default function App() {
       <Provider store={Store}>
         <ImageBackground source={Background} style={styles.imgBackground}>
           <SafeAreaView style={styles.container}>
-              <Ionicons name="settings-outline" size={24} color="white"/>
-
+            <Nav />
             <View style={styles.xxx}>
               <StatusBar style="auto" />
               <Main  />
@@ -49,7 +47,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'
+    width: '100%',
+    // marginTop: StatusBar.currentHeight,
   },
   xxx: {
     shadowColor: 'rgb(149, 184, 250)',

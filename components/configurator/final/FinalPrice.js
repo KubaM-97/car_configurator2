@@ -1,6 +1,6 @@
 import React from "react"
 import { View, Text, StyleSheet } from "react-native";
-import Layer from '~/components/configurator/global/Layer'
+import Layer from '~/components/global/Layer'
 import { globalStyles } from "~/assets/style";
 import { useSelector } from 'react-redux'
 

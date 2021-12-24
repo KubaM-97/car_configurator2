@@ -3,7 +3,7 @@ import { SafeAreaView, StyleSheet, Animated } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 
 import Welcome from "~/components/configurator/Welcome"
-import Layer from "~/components/configurator/global/Layer"
+import Layer from "~/components/global/Layer"
 
 import Engine from "~/components/configurator/steps/Engine"
 import BodyColor from "~/components/configurator/steps/BodyColor"
