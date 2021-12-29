@@ -3,8 +3,8 @@ import { View, FlatList, Text,  StyleSheet } from 'react-native';
 
 import Item from "~/components/configurator/Item"
 import { globalStyles } from '~/assets/style';
-import BackStepButton from '~/components/configurator/global/BackStepButton';
-import ContinueButton from '~/components/configurator/global/ContinueButton';
+import BackStepButton from '~/components/global/BackStepButton';
+import ContinueButton from '~/components/global/ContinueButton';
 import { useSelector } from 'react-redux';
 
 export default function Step(props) {
@@ -13,7 +13,7 @@ export default function Step(props) {
     
     return (
         <View style={styles.container}>
-          <BackStepButton />
+          { currentStep !== 1 ? <BackStepButton /> : null }
           <View style={styles.header}>
                 <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
           </View>

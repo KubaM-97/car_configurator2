@@ -11,7 +11,7 @@ import { Store } from './redux/store'
 
 import Main from "~/components/configurator/Main"
 import FinalPanel from "~/components/configurator/final/FinalPanel"
-import { Ionicons } from '@expo/vector-icons';
+import Nav from "~/components/global/Nav"
 
 const Background = require("~/assets/images/background.jpg")
 
@@ -29,20 +29,16 @@ export default function App() {
   else {
     return (
       <Provider store={Store}>
-        {/* <I18nextProvider i18n={i18next}> */}
-          <ImageBackground source={Background} style={styles.imgBackground}>
-            <Text>xxxxxxxxxxxxxxxxxx </Text>
-            <SafeAreaView style={styles.container}>
-                <Ionicons name="settings-outline" size={24} color="white"/>
-
-              <View style={styles.xxx}>
-                <StatusBar style="auto" />
-                <Main  />
-              </View>
-              <FinalPanel  />
-            </SafeAreaView>
-          </ImageBackground>
-        {/* </I18nextProvider> */}
+        <ImageBackground source={Background} style={styles.imgBackground}>
+          <SafeAreaView style={styles.container}>
+            <Nav />
+            <View style={styles.xxx}>
+              <StatusBar style="auto" />
+              <Main  />
+            </View>
+            <FinalPanel  />
+          </SafeAreaView>
+        </ImageBackground>
       </Provider>
     );
   }
@@ -53,7 +49,8 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    width: '100%'
+    width: '100%',
+    // marginTop: StatusBar.currentHeight,
   },
   xxx: {
     shadowColor: 'rgb(149, 184, 250)',

@@ -1,7 +1,7 @@
 import React from "react"
 import { StyleSheet, View } from 'react-native';
 
-import Layer from '~/components/configurator/global/Layer'
+import Layer from '~/components/global/Layer'
 import FinalPrice from "~/components/configurator/final/FinalPrice";
 
 export default function FinalPanel() {

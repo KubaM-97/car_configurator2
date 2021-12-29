@@ -15,7 +15,6 @@ export default function ContinueButton() {
       // <TouchableOpacity style={[globalStyles.button, styles.button]}>
       <TouchableOpacity style={{position: 'absolute', top: 40, left: -20 }}>
           <Pressable onPress={()=>dispatch(setCurrentStep(currentStep-1))}>
-              {/* <Ionicons name="settings-outline" size={24} color="white" style={styles.xxx}/> */}
               {/* <Ionicons name="settings" size={24} color="white" /> */}
               <Ionicons name="arrow-back" size={24} color="white" style={styles.xxx}/>
           </Pressable>
