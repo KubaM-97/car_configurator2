@@ -1,10 +1,8 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Pressable } from 'react-native';
 import { globalStyles } from '~/assets/style';
-import { useTranslation } from 'react-i18next';
 
 export default function Welcome(props) {
-    const { t, i18n } = useTranslation();
 
     return (
         <View style={styles.container}>
@@ -14,7 +12,6 @@ export default function Welcome(props) {
                     Welcome to our car configurator!!!
                 </Text>
                 <Text style={globalStyles.text}>
-                    Click on the button below! kk {t('translation')}
                 </Text>
                 <TouchableOpacity style={globalStyles.button}>
                     <Pressable onPress={()=>props.onNextStep()}>
