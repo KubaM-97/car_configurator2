@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableOpacity, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedItems } from '~/redux/actions'
+import { globalStyles } from '~/assets/style';
+import { Ionicons } from '@expo/vector-icons';
+import Layer from "~/components/configurator/global/Layer"
 
 
 export default function Item(props) {
@@ -13,11 +16,16 @@ export default function Item(props) {
     return (
         <TouchableOpacity style={styles.button}>
             <Pressable onPress={() => dispatch(setSelectedItems(item))}>
-                <View style={[{...styles.item, backgroundColor: isSelected ? 'red' : 'green'}]}>
-                    <Image source={img} size={24} style={{height: '90%', marginRight: 10}}/>
+                <View style={[{...styles.item, backgroundColor: isSelected ? '#3264a8' : 'black'}]}>
+                    <Layer />
+                    <Image source={img} size={10}/>
                     <View>
-                        <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{name}</Text>
-                        <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{price} euro</Text>
+                        <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
+                        <Text style={[globalStyles.text, styles.itemText]}> 
+                            <Ionicons name="logo-euro" size={9} color="lightblue"/> {price}
+                        </Text>
+                        {/* <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{name}</Text>
+                        <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{price} euro</Text> */}
                     </View>
                 </View>
             </Pressable>
@@ -29,12 +37,15 @@ export default function Item(props) {
 
 const styles = StyleSheet.create({
     item: {
-        backgroundColor: true ? 'lightblue' : 'green',
-        padding: 10,
-        marginVertical: 8,
-        width: '100%',
-        flexDirection: 'row',
+        // padding: 2,
+        // paddingVertical: 14,
+        marginHorizontal: 7,
+        flexDirection: 'column',
         justifyContent: 'space-evenly',
         alignItems: 'center', 
+        alignSelf: 'center'
     },
+    itemText: {
+        fontSize: 14,
+    }
 })

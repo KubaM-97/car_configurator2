@@ -18,11 +18,13 @@ export default function Step(props) {
                 <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
           </View>
           <FlatList
-                data={items}
-                keyExtractor={(item) => item.id}
-                renderItem={( {item} ) => <Item item={{...item, category}} />}
+              data={items}
+              keyExtractor={(item) => item.id}
+              renderItem={( {item} ) => <Item item={{...item, category}} />}
+              horizontal
+              contentContainerStyle={{justifyContent: 'center', alignItems: 'center', height: '100%'}}
           />
-          { currentStep !== 1 ? <ContinueButton /> : null }
+          <ContinueButton />
         </View>
     )
 }
