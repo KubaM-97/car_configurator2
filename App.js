@@ -1,10 +1,9 @@
 import React from 'react';
 import { StyleSheet, SafeAreaView, View, ImageBackground, Text } from 'react-native';
-// import './lang/i18n'; 
+import I18n from './lang/i18n';
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import { useFonts } from 'expo-font';
-
 
 import { Provider } from 'react-redux';
 import { Store } from './redux/store'
@@ -16,7 +15,10 @@ import Nav from "~/components/global/Nav"
 const Background = require("~/assets/images/background.jpg")
 
 export default function App() {
-
+  // onPress: () => {
+  //   //     I18n.locale = 'fr-Us';
+  //   //     this.setState({changeLanguage: 'English'});
+  //   //   },
   let [fontsLoaded] = useFonts({
     'Goldman-Regular':require('~/assets/fonts/Goldman-Regular.ttf'),
   });
@@ -33,7 +35,6 @@ export default function App() {
           <SafeAreaView style={styles.container}>
             <Nav />
             <View style={styles.xxx}>
-              <StatusBar style="auto" />
               <Main  />
             </View>
             <FinalPanel  />
@@ -51,6 +52,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: '100%',
     // marginTop: StatusBar.currentHeight,
+    marginTop: 20,
+    position: 'relative'
   },
   xxx: {
     shadowColor: 'rgb(149, 184, 250)',

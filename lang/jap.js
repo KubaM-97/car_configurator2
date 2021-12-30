@@ -10,6 +10,7 @@ export default {
     // settings
     settings: '設定',
     language: '舌',
+    selectLanguage: '言語を選択する',
 
     //steps
     engine: 'エンジン',

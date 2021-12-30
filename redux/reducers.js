@@ -6,7 +6,7 @@ import {
 
 const initialState = {
     selectedItems: [],
-    currentStep: 1,
+    currentStep: 0,
     stepsLength: 1,
 }
 

@@ -6,12 +6,12 @@ import SettingsPanel from "~/components/settings/SettingsPanel"
 
 export default function Settings(props) {
 
-    const [ showSettingsPanel, setShowSettingsPanel ]  = useState(false);
+    const [ showSettingsPanel, setShowSettingsPanel ] = useState(false);
     
     return (
         <View style={styles.settingsButton}>
             <SettingsButton onSetShowSettingsPanel={() => setShowSettingsPanel(true)}/>
-            {/* { showSettingsPanel==='true' ? <SettingsPanel showSettingsPanel={showSettingsPanel} setShowSettingsPanel={setShowSettingsPanel}/> : null } */}
+            { showSettingsPanel ? <SettingsPanel showSettingsPanel={showSettingsPanel} setShowSettingsPanel={()=>setShowSettingsPanel(false)}/> : null }
             {/* <SettingsPanel style={{display: showSettingsPanel ? 'block' : 'none'}} showSettingsPanel={showSettingsPanel} setShowSettingsPanel={setShowSettingsPanel}/> */}
         </View>
     );

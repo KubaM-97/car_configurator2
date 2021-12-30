@@ -1,21 +1,23 @@
 export default {
+    
     // welcome
     welcome_message: 'Welcome to our car configurator!!!',
 
     // buttons
-    continue: 'Continue',
-    lets_start: 'Let\'s start',
+    continue: 'Continue!!!',
+    lets_start: 'Let\'s start!!!',
     summarization: 'Summarization',
 
     // settings
     settings: 'Settings',
     language: 'Language',
+    selectLanguage: 'SELECT LANGUAGE',
 
     //steps
-    engine: 'Engine',
-    bodyColor: 'Body Color',
-    rimsColor: 'Rims Color',
-    rimsSize: 'Rims Size',
+    engine: 'Engines',
+    bodyColor: 'Body\'s Color',
+    rimsColor: 'Rims\' Color',
+    rimsSize: 'Rims\' Size',
     armchairs: 'Armchairs',
     upholsteries: 'Upholsteries',
     accessories: 'Accessories',
@@ -33,16 +35,16 @@ export default {
     bodyColorOrange: 'Orange',
     bodyColorPink: 'Pink',
     bodyColorGrey: 'Grey',
-    bodyColorLimon: 'Limon',
+    bodyColorLemon: 'Lemon',
 
     // rims
-    rimsPink: 'Pink',
     rimsBlack: 'Black',
     rimsGreen: 'Green',
+    rimsPink: 'Pink',
 
-    rims15: '15 inches',
-    rims16: '16 inches',
-    rims17: '17 inches',
+    rims15: '15-inches',
+    rims16: '16-inches',
+    rims17: '17-inches',
 
     // armchairs
     armchairsBlack: 'Black',
@@ -57,7 +59,7 @@ export default {
     upholsteriesGreen: 'Green',
     upholsteriesRed: 'Red',
 
-    //accessories
+    // accessories
     LED: 'LED',
     soundSystem: 'Sound System',
     sportsSuspension: 'Sports Suspension',

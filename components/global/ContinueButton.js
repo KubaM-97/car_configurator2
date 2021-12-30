@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, Pressable, Text, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
+import I18n from '~/lang/i18n';
 
 import { globalStyles } from '~/assets/style';
 import { setCurrentStep } from '~/redux/actions'
@@ -12,7 +13,7 @@ export default function ContinueButton() {
   return (
       <TouchableOpacity style={[globalStyles.button, styles.button]}>
           <Pressable onPress={()=>dispatch(setCurrentStep(currentStep+1))}>
-              <Text style={globalStyles.text}>Continue!!!</Text>
+              <Text style={globalStyles.text}>{I18n.t('continue')}</Text>
           </Pressable>
       </TouchableOpacity>
   )

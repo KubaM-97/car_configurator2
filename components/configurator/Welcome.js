@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity, Pressable } from 'react-native';
 import { globalStyles } from '~/assets/style';
+import I18n from '~/lang/i18n';
 
 export default function Welcome(props) {
 
@@ -9,13 +10,15 @@ export default function Welcome(props) {
 
             <View style={styles.container}>
                 <Text style={globalStyles.text}>
-                    Welcome to our car configurator!!!
+                    {I18n.t('welcome_message')}
                 </Text>
                 <Text style={globalStyles.text}>
                 </Text>
                 <TouchableOpacity style={globalStyles.button}>
                     <Pressable onPress={()=>props.onNextStep()}>
-                        <Text style={[globalStyles.text, styles.text]}>Let's start!!!</Text>
+                        <Text style={[globalStyles.text, styles.text]}>
+                            {I18n.t('lets_start')}
+                        </Text>
                     </Pressable>
                 </TouchableOpacity>
             </View>

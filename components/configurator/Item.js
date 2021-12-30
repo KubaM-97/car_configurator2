@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { setSelectedItems } from '~/redux/actions'
 import { globalStyles } from '~/assets/style';
 import { Ionicons } from '@expo/vector-icons';
-import Layer from "~/components/configurator/global/Layer"
+import Layer from "~/components/global/Layer"
 
 
 export default function Item(props) {
