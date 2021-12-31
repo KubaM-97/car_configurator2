@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Animated } from 'react-native';
+import { SafeAreaView, StyleSheet, Animated, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 
 import Welcome from "~/components/configurator/Welcome"
@@ -16,7 +16,7 @@ import Accessories from "~/components/configurator/steps/Accessories"
 // import Summary from "~/components/configurator/steps/Summary"
 
 import { setStepsLength } from '~/redux/actions'
-
+import i18n from 'react-native-i18n';
 
 export default function Main() {
     const steps = [
@@ -31,10 +31,11 @@ export default function Main() {
         // {id: 8, component: Summary}
     ];
 
-    const { currentStep } = useSelector(state => state.userReducer);
+    const { currentStep, ourLanguage } = useSelector(state => state.userReducer);
 
     const dispatch = useDispatch();
-
+    
+    i18n.locale = ourLanguage 
     useEffect(() => {
         dispatch(setStepsLength(8));
     }, [dispatch])

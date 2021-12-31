@@ -2,12 +2,14 @@ import {
     SET_SELECTED_ITEMS,
     SET_STEPS_LENGTH,
     SET_CURRENT_STEP,
+    SET_LANGUAGE,
 } from '~/redux/actions'
 
 const initialState = {
     selectedItems: [],
     currentStep: 0,
     stepsLength: 1,
+    ourLanguage: 'pl'
 }
 
 function userReducer(state = initialState, action) {
@@ -33,6 +35,8 @@ function userReducer(state = initialState, action) {
                return {...state, stepsLength: action.payload}
             case SET_CURRENT_STEP:
                return {...state, currentStep: action.payload}
+            case SET_LANGUAGE:
+               return {...state, ourLanguage: action.payload}
         default: return state;
     }
 }

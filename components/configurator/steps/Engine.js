@@ -11,14 +11,13 @@ import Step from '~/components/configurator/Step';
 export default function Engine() {
     
     const [engines, setEngines] = useState([
-        // {id: uuid.v4(), img: xxx, name: "Heat", price: 600},
-        // {id: uuid.v4(), img: xxx, name: "Combustion", price: 31000},
-        // {id: uuid.v4(), img: xxx, name: "Ion", price: 176000},
         {id: uuid.v4(), img: engineHeat, name: I18n.t('heat'), price: 600},
         {id: uuid.v4(), img: engineCombustion, name: I18n.t('combustion'), price: 31000},
         {id: uuid.v4(), img: engineIon, name: I18n.t('ion'), price: 176000}
     ])
+
     return (
         <Step items={engines} category={I18n.t('engine')} />
     )
+    
 }

@@ -10,9 +10,7 @@ export default function Welcome(props) {
 
             <View style={styles.container}>
                 <Text style={globalStyles.text}>
-                    {I18n.t('welcome_message')}
-                </Text>
-                <Text style={globalStyles.text}>
+                    {I18n.t('welcome_message')} 
                 </Text>
                 <TouchableOpacity style={globalStyles.button}>
                     <Pressable onPress={()=>props.onNextStep()}>
