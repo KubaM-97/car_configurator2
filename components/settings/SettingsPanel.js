@@ -6,25 +6,18 @@ import Languages from './Languages';
 
 
 export default function SettingsPanel(props) {
-    const [x, y] = useState(true);
+    const { showSettingsPanel, setShowSettingsPanel } = props; 
+    
     return (
 
-        // <Modal transparent={true}  animationType="slide" >
-            
-        // <TouchableWithoutFeedback style={{backgroundColor: 'green', padding: 20, width: 1000, height: 1000}} onPress={() => alert('Pressed!')}>
-        //     <View style={styles.settingsPanel}>
-        //         {/* <Text onPress={() => props.setShowSettingsPanel()} style={{color: 'white'}}>ZZZZZZZZZZZZZZZZ</Text> */}
-        //         <Languages />
-        //     </View>
-        //  </TouchableWithoutFeedback>
-        // </Modal>
-
-        <Modal transparent={true}  animationType="slide"  >
-            {/* <TouchableWithoutFeedback onPress={() => y(false)} style={{width: '100%', height: '100%'}}> */}
+        <Modal transparent={true} visible={showSettingsPanel} animationType="slide"
+        //  onRequestClose={()=>{console.log('opopo');}}
+          >
+            <TouchableWithoutFeedback onPress={() => setShowSettingsPanel(false)} style={{width: '100%', height: '100%'}}>
                 <View style={styles.settingsPanel}>
                     <Languages />
                 </View>
-            {/* </TouchableWithoutFeedback> */}
+            </TouchableWithoutFeedback>
             </Modal>
     );
 }
