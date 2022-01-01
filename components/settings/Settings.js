@@ -16,7 +16,7 @@ export default function Settings() {
     return (
         <View>
             <SettingsButton onSetShowSettingsPanel={() => setShowSettingsPanel(true)}/>
-            {/* { showSettingsPanel ? <SettingsPanel showSettingsPanel={showSettingsPanel} setShowSettingsPanel={()=>setShowSettingsPanel(false)}/> : null } */}
+            { showSettingsPanel ? <SettingsPanel showSettingsPanel={showSettingsPanel} setShowSettingsPanel={()=>setShowSettingsPanel(false)}/> : null }
         </View>
     );
 }

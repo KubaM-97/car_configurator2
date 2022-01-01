@@ -4,9 +4,9 @@
     "slug": "myproject",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "~/assets/images/background.jpg",
+    "icon": "~/assets/icon.png",
     "splash": {
-      "image": "~/assets/images/background.jpg",
+      "image": "~/assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,12 +21,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "~/assets/images/background.jpg",
+        "foregroundImage": "~/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
-      "favicon": "~/assets/images/background.jpg"
+      "favicon": "~/assets/favicon.png"
     }
   }
 }

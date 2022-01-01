@@ -1,24 +1,18 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity, Pressable } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
 import { globalStyles } from '~/assets/style';
 import I18n from '~/lang/i18n';
+import ContinueButton from '../global/ContinueButton';
 
-export default function Welcome(props) {
+export default function Welcome() {
 
     return (
         <View style={styles.container}>
-
             <View style={styles.container}>
                 <Text style={globalStyles.text}>
                     {I18n.t('welcome_message')} 
                 </Text>
-                <TouchableOpacity style={globalStyles.button}>
-                    <Pressable onPress={()=>props.onNextStep()}>
-                        <Text style={[globalStyles.text, styles.text]}>
-                            {I18n.t('lets_start')}
-                        </Text>
-                    </Pressable>
-                </TouchableOpacity>
+                <ContinueButton title={I18n.t('lets_start')}/>
             </View>
         </View>
     )

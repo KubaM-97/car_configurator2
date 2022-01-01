@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet } from 'react-native'
+import { View, Text, Image, StyleSheet, BackHandler } from 'react-native'
 import { Ionicons } from '@expo/vector-icons';
 import Select from '~/components/global/Select';
 import { globalStyles } from '~/assets/style'
@@ -31,7 +31,9 @@ function Flag(props){
         </View>
     )
 }
-export default function Languages() {
+export default function Languages(props) {
+    BackHandler.addEventListener('hardwareBackPress', ()=>props.xx())
+    // BackHandler.addEventListener('hardwareBackPress', ()=>console.log('llllllllllllll'))
     
     const selectTitle = {
         title: I18n.t('selectLanguage'),

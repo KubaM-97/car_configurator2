@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, View, Modal, Text, Image, TouchableWithoutFeedback, Alert } from 'react-native';
+import { StyleSheet, View, Modal, Text, Image, TouchableWithoutFeedback, Alert, BackHandler } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 import Languages from './Languages';
@@ -7,7 +7,8 @@ import Languages from './Languages';
 
 export default function SettingsPanel(props) {
     const { showSettingsPanel, setShowSettingsPanel } = props; 
-    
+    // BackHandler.addEventListener('hardwareBackPress', ()=>setShowSettingsPanel(false))
+    // BackHandler.addEventListener('hardwareBackPress', ()=>{return true})
     return (
 
         <Modal transparent={true} visible={showSettingsPanel} animationType="slide"
@@ -15,7 +16,7 @@ export default function SettingsPanel(props) {
           >
             <TouchableWithoutFeedback onPress={() => setShowSettingsPanel(false)} style={{width: '100%', height: '100%'}}>
                 <View style={styles.settingsPanel}>
-                    <Languages />
+                    <Languages xx={()=>setShowSettingsPanel(false)}/>
                 </View>
             </TouchableWithoutFeedback>
             </Modal>

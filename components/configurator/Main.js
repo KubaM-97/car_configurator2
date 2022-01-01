@@ -44,7 +44,7 @@ export default function Main() {
     
     return (
         <SafeAreaView style={styles.container}>
-            <Layer />
+            <Layer xx={styles.container.width}/>
             {
                 React.createElement(currentComponent)
             }

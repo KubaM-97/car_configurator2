@@ -6,14 +6,15 @@ import I18n from '~/lang/i18n';
 import { globalStyles } from '~/assets/style';
 import { setCurrentStep } from '~/redux/actions'
 
-export default function ContinueButton() {
+export default function ContinueButton(props) {
+  const { title } = props;
   const dispatch = useDispatch();
   const { currentStep } = useSelector(state => state.userReducer);
 
   return (
       <TouchableOpacity style={[globalStyles.button, styles.button]}>
           <Pressable onPress={()=>dispatch(setCurrentStep(currentStep+1))}>
-              <Text style={globalStyles.text}>{I18n.t('continue')}</Text>
+              <Text style={globalStyles.text}>{ title || I18n.t('continue')}</Text>
           </Pressable>
       </TouchableOpacity>
   )
@@ -24,6 +25,6 @@ const styles = StyleSheet.create({
     width: '90%',
     marginTop: 0,
     marginBottom: 40,
-    alignSelf: 'center'
+    alignSelf: 'center',
   }
 })
