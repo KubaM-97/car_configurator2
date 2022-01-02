@@ -18,8 +18,7 @@ export default function Item(props) {
             <Pressable onPress={() => dispatch(setSelectedItems(item))}>
                 <View style={[{...styles.item, backgroundColor: isSelected ? '#3264a8' : 'black'}]}>
                     <Layer />
-                    <View style={{width: 100, height: 100, backgroundColor: 'yellow', alignSelf: 'center'}}/>
-                    {/* <Image source={img} size={10}/> */}
+                    <Image source={img} style={styles.itemImage} />
                     <View>
                         <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
                         <Text style={[globalStyles.text, styles.itemText]}> 
@@ -46,5 +45,9 @@ const styles = StyleSheet.create({
     },
     itemText: {
         fontSize: 14,
+    },
+    itemImage: {
+        width: 100,
+        height: 100,
     }
 })

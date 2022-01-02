@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import uuid from 'react-native-uuid';
 import I18n from '~/lang/i18n';
 
-import engineHeat from "~/assets/images/engines/engineHeat.jpg"
-import engineCombustion from "~/assets/images/engines/engineCombustion.jpg"
-import engineIon from "~/assets/images/engines/engineIon.jpg"
+import engineHeat from "~/assets/images/engines/engineHeat.png"
+import engineCombustion from "~/assets/images/engines/engineCombustion.png"
+import engineIon from "~/assets/images/engines/engineIon.png"
 
 import Step from '~/components/configurator/Step';
 
