@@ -13,7 +13,7 @@ export const globalStyles = StyleSheet.create({
     button: {
         fontFamily: 'Goldman-Regular',
         backgroundColor: '#0f3f82',
-        paddingHorizontal: 2,
+        paddingHorizontal: 20,
         paddingVertical: 8,
         alignItems: 'center',
         marginTop: 80,

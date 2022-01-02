@@ -3,14 +3,15 @@ import { StyleSheet, View } from 'react-native';
 
 import { Ionicons } from '@expo/vector-icons';
 
-export default function SettingsButton(props) {
+export default function NavButton() {
 
-    const { onShowShowSettingsPanel } = props;
+    const navigationDrawer = () => {
+        console.log('navigation');
+    }
     
     return (
         <View style={styles.settingsButton}>
-            <Ionicons color='lightblue' name="settings-outline" size={28}
-                onPress={()=>onShowShowSettingsPanel()}
+            <Ionicons color='lightblue' name="menu-outline" size={28} onPress={navigationDrawer}
             />
         </View>
     );
@@ -18,6 +19,6 @@ export default function SettingsButton(props) {
 
 const styles = StyleSheet.create({
     settingsButton: {
-        paddingRight: 40
+        paddingLeft: 40
     }
 });

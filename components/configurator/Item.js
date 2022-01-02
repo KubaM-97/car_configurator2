@@ -14,18 +14,17 @@ export default function Item(props) {
     const { selectedItems } = useSelector(state => state.userReducer);
     const isSelected = selectedItems.some(el => el.category === item.category && el.name === item.name )
     return (
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity>
             <Pressable onPress={() => dispatch(setSelectedItems(item))}>
                 <View style={[{...styles.item, backgroundColor: isSelected ? '#3264a8' : 'black'}]}>
                     <Layer />
-                    <Image source={img} size={10}/>
+                    <View style={{width: 100, height: 100, backgroundColor: 'yellow', alignSelf: 'center'}}/>
+                    {/* <Image source={img} size={10}/> */}
                     <View>
                         <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
                         <Text style={[globalStyles.text, styles.itemText]}> 
                             <Ionicons name="logo-euro" size={9} color="lightblue"/> {price}
                         </Text>
-                        {/* <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{name}</Text>
-                        <Text style={{color: 'white', fontSize: 14, textAlign: 'center'}}>{price} euro</Text> */}
                     </View>
                 </View>
             </Pressable>
@@ -37,7 +36,7 @@ export default function Item(props) {
 
 const styles = StyleSheet.create({
     item: {
-        // padding: 2,
+        padding: 2,
         // paddingVertical: 14,
         marginHorizontal: 7,
         flexDirection: 'column',

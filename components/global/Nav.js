@@ -1,39 +1,32 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Dimensions, Text } from 'react-native';
-
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import Layer from "~/components/global/Layer"
-// import Hamburger from "~/components/settings/Hamburger"
+import NavButton from "~/components/navigation/NavButton"
 import Settings from "~/components/settings/Settings"
-import SettingsPanel from "~/components/settings/SettingsPanel"
 
 export default function Nav() {
-
+    
     return (
-        <View style={styles.nav}>
-            <Layer />
-            <Text style={{color: 'white'}}>
-                Hamburger
-            </Text>
-            {/* <Hamburger /> */}
-            <Settings />
-            {/* <SettingsPanel /> */}
+        <View style={styles.navWrapper}>
+            <View style={styles.navContent}>
+                <Layer />
+                <NavButton />
+                <Settings />
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
-    nav: {
+    navWrapper: {
         position: 'absolute',
         top: 0,
-        flex: 1,
+        width: '105%',
+    },
+    navContent: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        // marginHorizontal: 10,
         alignItems: 'center',
-        width: '100%',
         height: 60,
-
-        // width: Dimensions.width,
-        // height: 10,
     }
 });
