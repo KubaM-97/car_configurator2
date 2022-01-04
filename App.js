@@ -35,15 +35,7 @@
 //   );
 // }
 import React from 'react';
-import {Text} from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import ConfiguratorScreen from '~/screens/ConfiguratorScreen';
-import StatisticsScreen from '~/screens/StatisticsScreen';
-
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-import Navigator from '~/routes/stackNavigation'
-const Stack = createNativeStackNavigator();
+import Navigator from '~/routes/stackNavigation.js'
 
 export default function App  () {
     return (
