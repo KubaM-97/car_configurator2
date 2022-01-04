@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Animated } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 
 import Welcome from "~/components/configurator/Welcome"
@@ -17,7 +17,6 @@ import Accessories from "~/components/configurator/steps/Accessories"
 
 import { setStepsLength } from '~/redux/actions'
 
-
 export default function Main() {
     const steps = [
         {id: 0, component: Welcome}, 
@@ -34,7 +33,7 @@ export default function Main() {
     const { currentStep } = useSelector(state => state.userReducer);
 
     const dispatch = useDispatch();
-
+    
     useEffect(() => {
         dispatch(setStepsLength(8));
     }, [dispatch])
@@ -53,18 +52,7 @@ export default function Main() {
 
 const styles = StyleSheet.create({
     container: {
-        position: 'relative',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        color: 'rgb(255, 0, 0)',
-        opacity: 0.8,
-        width: '100%',
-        marginHorizontal: 'auto',
-        height: 100,
-    },
-    imgBackground: {
-        flex: 1,
-        width: '100%',
     },
 });

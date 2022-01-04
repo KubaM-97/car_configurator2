@@ -1,5 +1,20 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native';
+// import {BoxShadow} from 'react-native-shadow'
+
+// const shadowOpt = {
+// 	width:100,
+// 	height:100,
+// 	color:"#000",
+// 	border:2,
+// 	radius:3,
+// 	opacity:0.2,
+// 	x:0,
+// 	y:3,
+// 	style:{marginVertical:5}
+// }
+
+       
 export default function Layer() {
     return (
         <View style={styles.layer} />
@@ -12,13 +27,8 @@ const styles = StyleSheet.create({
         width: '100%',
         height: '100%',
         backgroundColor: 'black',
-        opacity: .45,
-        // padding: inherit,
-        // boxSizing: 'border-box',
-        
-    shadowColor: 'red',
-    shadowRadius: 14,
-    shadowOffset: {width: 200, height: 200},
-    shadowOpacity: 0.75,
+        borderWidth: 3,
+        borderColor: 'lightblue',
+        opacity: .6,
     },
 });

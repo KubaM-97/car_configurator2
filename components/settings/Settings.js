@@ -1,29 +1,24 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text} from 'react-native';
+import { View } from 'react-native';
+import i18n from 'react-native-i18n';
+import { useSelector } from 'react-redux'
 
 import SettingsButton from "~/components/settings/SettingsButton"
 import SettingsPanel from "~/components/settings/SettingsPanel"
 
-export default function Settings(props) {
+export default function Settings() {
+    const { ourLanguage } = useSelector(state => state.userReducer);
+    i18n.locale = ourLanguage;
 
-    const [ showSettingsPanel, setShowSettingsPanel ] = useState(false);
+    const [ isSettingsPanelVisible, setShowSettingsPanel ] = useState(false);
     
+    const onShowSettingsPanel = () => {setShowSettingsPanel(true)}
+    const onHideShowSettingsPanel = () => {setShowSettingsPanel(false)}
+
     return (
-        <View style={styles.settingsButton}>
-            <SettingsButton onSetShowSettingsPanel={() => setShowSettingsPanel(true)}/>
-            { showSettingsPanel ? <SettingsPanel showSettingsPanel={showSettingsPanel} setShowSettingsPanel={()=>setShowSettingsPanel(false)}/> : null }
-            {/* <SettingsPanel style={{display: showSettingsPanel ? 'block' : 'none'}} showSettingsPanel={showSettingsPanel} setShowSettingsPanel={setShowSettingsPanel}/> */}
+        <View>
+            <SettingsButton onShowSettingsPanel={onShowSettingsPanel}/>
+            <SettingsPanel isSettingsPanelVisible={isSettingsPanelVisible} onHideShowSettingsPanel={onHideShowSettingsPanel}/>
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    settingsButton: {
-        // width: '100%',
-        // height: '100%',
-        // marginTop: 30,
-        // flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center'
-    }
-});
