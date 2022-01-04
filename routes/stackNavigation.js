@@ -11,7 +11,6 @@ const screens = {
     Statistics: {
         screen: Statistics,
     },
-    
 }
 
 const defaultNavigationOptions = {
@@ -21,5 +20,7 @@ const defaultNavigationOptions = {
 const StackNavigation = createStackNavigator(screens, { 
     defaultNavigationOptions
 })
+
+// const Drawer = createDrawerNavigator();
 
 export default createAppContainer(StackNavigation)
