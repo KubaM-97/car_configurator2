@@ -52,7 +52,8 @@ export default function Main() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        height: 500,
+        width: '90%',
         alignItems: 'center',
     },
 });
