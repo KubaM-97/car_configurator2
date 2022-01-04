@@ -11,13 +11,11 @@ import I18n from '~/lang/i18n';
 export default function Step(props) {
     const { items, category } = props;
     const { currentStep, stepsLength } = useSelector(state => state.userReducer);
-    const title = currentStep !== stepsLength - 1 ? I18n.t('continue') : I18n.t('summarization');
+    const title = currentStep !== stepsLength - 1 ? I18n.t('continue') : I18n.t('summarize');
     return (
         <View style={styles.container}>
           <BackStepButton />
-          <View style={styles.header}>
-                <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
-          </View>
+          <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
           <FlatList
               data={items}
               keyExtractor={(item) => item.id}
@@ -29,50 +27,18 @@ export default function Step(props) {
         </View>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const styles = StyleSheet.create({
-  header:{
-    // marginTop: 30,
-  },
   headerText:{
     fontSize: 28, 
     color: '#5fb2ff', 
   },
   container: {
-    marginTop: 30,
-
-    backgroundColor: 'pink',
     width: '80%',
-    position: 'relative',
-    // height: 400,
-    marginTop: '10%',
-    // justifyContent: 'center',
-    alignSelf: 'center'
-  },
-  button: {
-    // width: '90%',
-    // marginTop: 0,
-    // marginBottom: 40,
-    // alignSelf: 'center'
+    marginTop: '10%', 
+    height: '80%',
   },
   items: {
-    backgroundColor: 'red',
     alignSelf: 'center', 
-    // justifyContent: 'center',
-    // height: '100%',
   }
 })
 

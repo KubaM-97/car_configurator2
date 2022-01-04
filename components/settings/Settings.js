@@ -12,12 +12,12 @@ export default function Settings() {
 
     const [ isSettingsPanelVisible, setShowSettingsPanel ] = useState(false);
     
-    const onShowSettingsPanel = () => {console.log('setShowSettingsPanel(true)');}
+    const onShowSettingsPanel = () => {setShowSettingsPanel(true)}
     const onHideShowSettingsPanel = () => {setShowSettingsPanel(false)}
 
     return (
         <View>
-            <SettingsButton onShowSettingsPanel={()=>onShowSettingsPanel()}/>
+            <SettingsButton onShowSettingsPanel={onShowSettingsPanel}/>
             <SettingsPanel isSettingsPanelVisible={isSettingsPanelVisible} onHideShowSettingsPanel={onHideShowSettingsPanel}/>
         </View>
     );

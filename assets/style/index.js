@@ -16,6 +16,5 @@ export const globalStyles = StyleSheet.create({
         paddingHorizontal: 20,
         paddingVertical: 8,
         alignItems: 'center',
-        marginTop: 80,
     },
 })

@@ -12,7 +12,7 @@ export default function ContinueButton() {
   return (
     <TouchableOpacity style={styles.button}>
         <Pressable onPress={()=>dispatch(setCurrentStep(currentStep-1))}>
-            <Ionicons name="arrow-back" size={24} color="lightblue"/>
+            <Ionicons name="arrow-back" size={30} color="lightblue"/>
         </Pressable>
     </TouchableOpacity>
   )
@@ -21,7 +21,7 @@ export default function ContinueButton() {
 const styles = StyleSheet.create({
   button: {
     position: 'absolute', 
-    top: 40, 
+    top: 5,
     left: -20,
   },
 })

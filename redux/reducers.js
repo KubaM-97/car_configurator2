@@ -5,6 +5,7 @@ import {
     SET_LANGUAGE,
 } from '~/redux/actions'
 import i18n from 'react-native-i18n';
+import update from 'react-addons-update'
 
 const initialState = {
     selectedItems: [],
@@ -14,23 +15,13 @@ const initialState = {
 }
 
 function userReducer(state = initialState, action) {
-    const isItemExists = state.selectedItems.some(el => el.category === action.payload.category);
     switch (action.type) {
         case SET_SELECTED_ITEMS:
-            if (isItemExists) {
-                const index = state.selectedItems.findIndex(el => el.category === action.payload.category)
-                return {
-                    ...state,
-                    selectedItems: state.selectedItems.map(
-                        (item, i) => i !== index ? {... item} : action.payload
-                    )
-                }
-            }
-            if (!isItemExists) {
-                return {
-                    ...state,
-                    selectedItems: [...state.selectedItems, action.payload]
-                }
+            const selectedItems = [...state.selectedItems]
+            selectedItems[state.currentStep - 1] = action.payload
+            return {
+                ...state,
+                selectedItems
             }
             case SET_STEPS_LENGTH:
                return {...state, stepsLength: action.payload}

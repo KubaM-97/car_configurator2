@@ -12,19 +12,17 @@ export default function Item(props) {
     const { img, name, price } = item;
     const dispatch = useDispatch()
     const { selectedItems } = useSelector(state => state.userReducer);
-    const isSelected = selectedItems.some(el => el.category === item.category && el.name === item.name )
+    const isSelected = selectedItems.some(el => el?.category === item.category && el?.name === item.name )
     return (
         <TouchableOpacity>
             <Pressable onPress={() => dispatch(setSelectedItems(item))}>
                 <View style={[{...styles.item, backgroundColor: isSelected ? '#3264a8' : 'black'}]}>
                     <Layer />
                     <Image source={img} style={styles.itemImage} />
-                    <View>
-                        <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
-                        <Text style={[globalStyles.text, styles.itemText]}> 
-                            <Ionicons name="logo-euro" size={9} color="lightblue"/> {price}
-                        </Text>
-                    </View>
+                    <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
+                    <Text style={[globalStyles.text, styles.itemText]}> 
+                        <Ionicons name="logo-euro" size={9} color="lightblue"/> {price}
+                    </Text>
                 </View>
             </Pressable>
         </TouchableOpacity>
@@ -35,8 +33,7 @@ export default function Item(props) {
 
 const styles = StyleSheet.create({
     item: {
-        padding: 2,
-        // paddingVertical: 14,
+        height: '86%',
         marginHorizontal: 7,
         flexDirection: 'column',
         justifyContent: 'space-evenly',
@@ -49,5 +46,6 @@ const styles = StyleSheet.create({
     itemImage: {
         width: 100,
         height: 100,
+        margin: 10,
     }
 })

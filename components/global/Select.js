@@ -2,19 +2,18 @@ import React, { useState } from 'react'
 import { Text, View, StyleSheet, TouchableWithoutFeedback } from 'react-native'
 import { globalStyles } from '~/assets/style'
 import uuid from 'react-native-uuid'
-import { useSelector, useDispatch } from 'react-redux'
-import I18n from '~/lang/i18n';
 
 
 export default function Select(props) {
     const { title, icon, options, onSelect } = props;
-    const [ expand, setExpand ] = useState(false);
-    const { ourLanguage } = useSelector(state => state.userReducer);
+    const [ areSelectOptionsVisible, setSelectOptionsVisible ] = useState(false);
+
+    // const toggleSetSelectOptionsVisible = setSelectOptionsVisible(!areSelectOptionsVisible);
 
     const selectOptions = options.map( option => 
-        <TouchableWithoutFeedback key={uuid.v4()} onPress={()=>{setExpand(false); onSelect(option.value);}}>
+        <TouchableWithoutFeedback key={uuid.v4()} onPress={()=>{setSelectOptionsVisible(false); onSelect(option.value);}}>
             <View style={styles.select}>
-                <Text>{option.text} {ourLanguage} {I18n.t('selectLanguage')}</Text>
+                <Text>{option.text}</Text>
             </View>
         </TouchableWithoutFeedback>
     );
@@ -22,11 +21,9 @@ export default function Select(props) {
     return (
         <View>
             <View style={styles.select}>
-                <Text onPress={()=>setExpand(true)} style={[globalStyles.text, styles.selectText]}>{title} {icon} {ourLanguage}</Text>
+                <Text onPress={()=>setSelectOptionsVisible(true)} style={[globalStyles.text, styles.selectText]}>{title} {icon}</Text>
             </View>
-            <View style={{width: '100%'}}>
-                {expand ? selectOptions : null }
-            </View>
+            {areSelectOptionsVisible ? selectOptions : null }
         </View>
     )
 }
@@ -34,14 +31,13 @@ export default function Select(props) {
 const styles = StyleSheet.create({
     select: {
         backgroundColor: 'lightblue',
-        paddingHorizontal: 30,
+        paddingHorizontal: 65,
         paddingVertical: 10,
         borderWidth: 2,
-        borderColor: 'black',
         width: '100%',
     },
     selectText: {
         color: 'white',
         fontSize: 18,
-    }
+    },
 })

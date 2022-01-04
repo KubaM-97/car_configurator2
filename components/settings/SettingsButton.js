@@ -5,12 +5,12 @@ import { Ionicons } from '@expo/vector-icons';
 
 export default function SettingsButton(props) {
 
-    const { onShowShowSettingsPanel } = props;
+    const { onShowSettingsPanel } = props;
     
     return (
         <View style={styles.settingsButton}>
             <Ionicons color='lightblue' name="settings-outline" size={28}
-                onPress={()=>onShowShowSettingsPanel()}
+                onPress={()=>onShowSettingsPanel()}
             />
         </View>
     );

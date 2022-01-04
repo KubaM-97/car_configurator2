@@ -8,7 +8,7 @@ export default function Welcome() {
 
     return (
         <View style={styles.container}>
-            <Text style={globalStyles.text}>
+            <Text style={[globalStyles.text, styles.text]}>
                 {I18n.t('welcome_message')} 
             </Text>
             <ContinueButton title={I18n.t('lets_start')}/>
@@ -18,14 +18,15 @@ export default function Welcome() {
 const styles = StyleSheet.create({
     container: {
         width: '90%',
-        height: '60%',
-        marginTop: '25%',
+        height: '80%',
+        marginTop: '10%',
         justifyContent: 'space-between',
     },
     text: {
         color: '#5fb2ff',
         padding: 8,
         fontSize: 30,
+        marginTop: '10%',
     }
   });
 
