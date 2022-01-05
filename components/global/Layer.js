@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, StyleSheet } from 'react-native';
-import {BoxShadow} from 'react-native-shadow'
+// import {BoxShadow} from 'react-native-shadow'
 
 const shadowOpt = {
 	width:100,

@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Animated, Text } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { SafeAreaView, StyleSheet, Animated, Text, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 
 import Welcome from "~/components/configurator/Welcome"
@@ -37,17 +37,59 @@ export default function Main() {
     
     i18n.locale = ourLanguage 
     useEffect(() => {
+        console.log('oooo');
         dispatch(setStepsLength(8));
     }, [dispatch])
 
     const currentComponent = steps[currentStep].component;
     
+
+    const [rotateAnimation, setRotateAnimation] = useState(new Animated.Value(0));
+
+    const handleAnimation = () => {
+        console.log('dsdsd');
+      Animated.timing(rotateAnimation, {
+        toValue: 1,
+        duration: 600,
+        useNativeDriver: true
+      }).start(() => {
+        // rotateAnimation.setValue(0);
+      });
+    //   onSetShowSettingsPanel
+    };
+  
+    const interpolateRotating = rotateAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, -540],
+    });
+  
+    const animatedStyle = {
+      transform: [
+        {
+          translateX: interpolateRotating,
+        },
+      ],
+    };
+
+
+
+
+
+
+
+
     return (
         <SafeAreaView style={styles.container}>
-            <Layer xx={styles.container.width}/>
-            {
-                React.createElement(currentComponent)
-            }
+            <TouchableWithoutFeedback
+                onPress={async () => handleAnimation()}
+            >
+                {/* <Layer  onPress={async () => handleAnimation()}/> */}
+                <Animated.View style={animatedStyle}>
+                    {
+                        React.createElement(currentComponent)
+                    }
+                </Animated.View> 
+            </TouchableWithoutFeedback> 
         </SafeAreaView>
     );
 }
