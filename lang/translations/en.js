@@ -6,7 +6,7 @@ export default {
     // buttons
     continue: 'Continue!!!',
     lets_start: 'Let\'s start!!!',
-    summarization: 'Summarization',
+    summarize: 'Summarize',
 
     // settings
     settings: 'Settings',

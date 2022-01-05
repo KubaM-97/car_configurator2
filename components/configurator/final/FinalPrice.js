@@ -3,7 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import Layer from '~/components/global/Layer'
 import { globalStyles } from "~/assets/style";
 import { useSelector } from 'react-redux'
-
+import { formatPrice } from "~/assets/utils";
+import { Ionicons } from "@expo/vector-icons";
 export default function FinalPrice() {
     const {selectedItems} = useSelector(state => state.userReducer)
 
@@ -12,9 +13,9 @@ export default function FinalPrice() {
     return(
         <View style={styles.finalPrice}>
             <Layer />
-            <Text style={[globalStyles.text, styles.finalPriceText]}> {totalPrice} </Text>
-            {/* // const TotalPrice = props.totalSum; */}
-            {/* € {formatPrice(TotalPrice)} */}
+            <Text style={[globalStyles.text, styles.finalPriceText]}> 
+                <Ionicons name="logo-euro" size={14} color="lightblue"/> {formatPrice(totalPrice)} 
+            </Text>
         </View>
     )
 }
@@ -31,6 +32,9 @@ const styles = StyleSheet.create({
         fontSize: 18,
         textShadowOffset: {width: 2, height: 2},
         textShadowRadius: 10,
+        paddingLeft: 10,
+        paddingRight: 12,
+        paddingTop: 4,
     }
 })
 

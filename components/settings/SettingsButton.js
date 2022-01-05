@@ -44,6 +44,6 @@ export default function SettingsButton(props) {
 
 const styles = StyleSheet.create({
     settingsButton: {
-        paddingRight: 20
+        paddingRight: 40
     }
 });

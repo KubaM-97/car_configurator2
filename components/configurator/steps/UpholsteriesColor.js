@@ -11,9 +11,9 @@ import upholsteryRed from "~/assets/images/upholsteriesColor/upholsteryRed.png"
 export default function UpholsteriesColor() {
     
   const [upholsteriesColor, setUpholsteriesColor] = useState([
-    {id: uuid.v4(), img: upholsteryBlack, name: I18n.t('Black'), price: 300},
-    {id: uuid.v4(), img: upholsteryGreen, name: I18n.t('Green'), price: 300},
-    {id: uuid.v4(), img: upholsteryRed, name: I18n.t('Red'), price: 300}
+    {id: uuid.v4(), img: upholsteryBlack, name: I18n.t('upholsteriesBlack'), price: 300},
+    {id: uuid.v4(), img: upholsteryGreen, name: I18n.t('upholsteriesGreen'), price: 300},
+    {id: uuid.v4(), img: upholsteryRed, name: I18n.t('upholsteriesRed'), price: 300}
 ])
     
   return (

@@ -16,7 +16,6 @@ import Accessories from "~/components/configurator/steps/Accessories"
 // import Summary from "~/components/configurator/steps/Summary"
 
 import { setStepsLength } from '~/redux/actions'
-import i18n from 'react-native-i18n';
 
 export default function Main() {
     const steps = [
@@ -31,11 +30,10 @@ export default function Main() {
         // {id: 8, component: Summary}
     ];
 
-    const { currentStep, ourLanguage } = useSelector(state => state.userReducer);
+    const { currentStep } = useSelector(state => state.userReducer);
 
     const dispatch = useDispatch();
     
-    i18n.locale = ourLanguage 
     useEffect(() => {
         console.log('oooo');
         dispatch(setStepsLength(8));
@@ -96,18 +94,7 @@ export default function Main() {
 
 const styles = StyleSheet.create({
     container: {
-        position: 'relative',
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
-        color: 'rgb(255, 0, 0)',
-        opacity: 0.8,
-        width: '100%',
-        marginHorizontal: 'auto',
-        height: 100,
-    },
-    imgBackground: {
-        flex: 1,
-        width: '100%',
     },
 });

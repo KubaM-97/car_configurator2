@@ -1,38 +1,27 @@
-import React, {useState} from 'react';
-import { StyleSheet, View, Modal, Text, Image, TouchableWithoutFeedback, Alert, BackHandler } from 'react-native';
+import React from 'react';
+import { StyleSheet, View, Modal } from 'react-native';
 
-import { Ionicons } from '@expo/vector-icons';
 import Languages from './Languages';
 
-
 export default function SettingsPanel(props) {
-    const { showSettingsPanel, setShowSettingsPanel } = props; 
-    // BackHandler.addEventListener('hardwareBackPress', ()=>setShowSettingsPanel(false))
-    // BackHandler.addEventListener('hardwareBackPress', ()=>{return true})
+    const { isSettingsPanelVisible, onHideSettingsPanel } = props; 
+    
     return (
-
-        <Modal transparent={true} visible={showSettingsPanel} animationType="slide"
-        //  onRequestClose={()=>{console.log('opopo');}}
-          >
-            <TouchableWithoutFeedback onPress={() => setShowSettingsPanel(false)} style={{width: '100%', height: '100%'}}>
-                <View style={styles.settingsPanel}>
-                    <Languages xx={()=>setShowSettingsPanel(false)}/>
-                </View>
-            </TouchableWithoutFeedback>
-            </Modal>
+        <Modal transparent={true} visible={isSettingsPanelVisible} animationType="slide" onRequestClose={onHideSettingsPanel}>
+            <View style={styles.settingsPanel}>
+                <Languages/>
+            </View>
+        </Modal>
     );
 }
 
 const styles = StyleSheet.create({
     settingsPanel: {
-        position: 'absolute',
-        top: '10%',
-        left: '5%',
         flex: 1,
         alignItems: 'center',
         paddingTop: 100,
-        width: '90%',
-        height: '80%',
+        width: '100%',
+        height: '100%',
         backgroundColor: 'black',
         opacity: .7,
     },

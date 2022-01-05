@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import uuid from 'react-native-uuid';
 import I18n from '~/lang/i18n';
 
-import LED from "~/assets/images/accessories/LED.jpg"
-import soundSystem from "~/assets/images/accessories/soundSystem.jpg"
-import sportsSuspension from "~/assets/images/accessories/sportsSuspension.jpg"
+import LED from "~/assets/images/accessories/LED.png"
+import soundSystem from "~/assets/images/accessories/soundSystem.png"
+import sportsSuspension from "~/assets/images/accessories/sportsSuspension.png"
 
 import Step from '~/components/configurator/Step';
 

@@ -11,58 +11,34 @@ import I18n from '~/lang/i18n';
 export default function Step(props) {
     const { items, category } = props;
     const { currentStep, stepsLength } = useSelector(state => state.userReducer);
-    const title = currentStep !== stepsLength ? I18n.t('continue') : I18n.t('summarization');
+    const title = currentStep !== stepsLength - 1 ? I18n.t('continue') : I18n.t('summarize');
     return (
         <View style={styles.container}>
-          { currentStep !== 1 ? <BackStepButton /> : null }
-          <View style={styles.header}>
-                <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
-          </View>
+          <BackStepButton />
+          <Text style={[globalStyles.text, styles.headerText]}>{currentStep}/{stepsLength} {category}</Text>
           <FlatList
               data={items}
               keyExtractor={(item) => item.id}
               renderItem={( {item} ) => <Item item={{...item, category}} />}
               horizontal
-              contentContainerStyle={{justifyContent: 'center', alignItems: 'center', height: '100%'}}
+              contentContainerStyle={styles.items}
           />
           <ContinueButton title={title}/>
         </View>
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const styles = StyleSheet.create({
-  header:{
-    marginTop: 30,
-  },
   headerText:{
     fontSize: 28, 
     color: '#5fb2ff', 
   },
   container: {
     width: '80%',
-    position: 'relative',
-    height: 400,
-    flex: 1,
-    justifyContent: 'center',
+    marginTop: '10%', 
+    height: '80%',
   },
-  button: {
-    width: '90%',
-    marginTop: 0,
-    marginBottom: 40,
-    alignSelf: 'center'
+  items: {
+    alignSelf: 'center', 
   }
 })
 

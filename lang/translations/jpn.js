@@ -5,7 +5,7 @@ export default {
     // buttons
     continue: '次',
     lets_start: '始めます',
-    summarization: '概要',
+    summarize: '要約する',
 
     // settings
     settings: '設定',
