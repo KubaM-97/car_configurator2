@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet, Animated, Text, TouchableOpacity, TouchableHighlight, TouchableWithoutFeedback } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux'
+import { connect } from 'react-redux';
+import React, { Component } from 'react';
+import { SafeAreaView, StyleSheet, Animated } from 'react-native';
 
 import Welcome from "~/components/configurator/Welcome"
 import Layer from "~/components/global/Layer"
@@ -13,12 +13,14 @@ import Armchairs from "~/components/configurator/steps/Armchairs"
 import UpholsteriesColor from "~/components/configurator/steps/UpholsteriesColor"
 import Accessories from "~/components/configurator/steps/Accessories"
 
-// import Summary from "~/components/configurator/steps/Summary"
+import Summary from "~/components/configurator/steps/Summary"
 
 import { setStepsLength } from '~/redux/actions'
+import i18n from 'react-native-i18n';
 
-export default function Main() {
-    const steps = [
+class Main extends Component {
+    state = {
+      steps: [
         {id: 0, component: Welcome}, 
         {id: 1, component: Engine},
         {id: 2, component: BodyColor},
@@ -28,73 +30,78 @@ export default function Main() {
         {id: 6, component: UpholsteriesColor},
         {id: 7, component: Accessories},
         // {id: 8, component: Summary}
-    ];
-
-    const { currentStep } = useSelector(state => state.userReducer);
-
-    const dispatch = useDispatch();
-    
-    useEffect(() => {
-        console.log('oooo');
-        dispatch(setStepsLength(8));
-    }, [dispatch])
-
-    const currentComponent = steps[currentStep].component;
-    
-
-    const [rotateAnimation, setRotateAnimation] = useState(new Animated.Value(0));
-
-    const handleAnimation = () => {
-        console.log('dsdsd');
-      Animated.timing(rotateAnimation, {
-        toValue: 1,
-        duration: 600,
-        useNativeDriver: true
-      }).start(() => {
-        // rotateAnimation.setValue(0);
+      ],
+      currentStep: this.props.currentStep,
+      rotateAnimation: new Animated.Value(0),
+    }
+    async shouldComponentUpdate(nextProps, b){
+      await Animated.timing(this.state.rotateAnimation, {
+        toValue: -1,
+        duration: 200,
+        useNativeDriver: true,
+      }).start(async () => { 
+        if(this.state.currentStep !== nextProps.currentStep) this.setState({currentStep:nextProps.currentStep})
+        this.state.rotateAnimation.setValue(1);
+        Animated.timing(this.state.rotateAnimation, {
+          toValue: 0,
+          duration: 100, 
+          delay: 50,
+          useNativeDriver: true,
+        }).start(() => {
+          this.state.rotateAnimation.setValue(0);
+        });
       });
-    //   onSetShowSettingsPanel
-    };
-  
-    const interpolateRotating = rotateAnimation.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, -540],
-    });
-  
-    const animatedStyle = {
+      return false
+    }  
+      
+    interpolateRotating = () => {
+      return this.state.rotateAnimation.interpolate({
+        inputRange: [-1, 0, 1],
+        outputRange: [-540, 0, 540],
+      });
+    }
+    animatedStyle = {
       transform: [
         {
-          translateX: interpolateRotating,
+          translateX: this.interpolateRotating(),
         },
       ],
     };
-
-
-
-
-
-
-
-
-    return (
+  
+    render() {
+      return(
         <SafeAreaView style={styles.container}>
-            <TouchableWithoutFeedback
-                onPress={async () => handleAnimation()}
-            >
-                {/* <Layer  onPress={async () => handleAnimation()}/> */}
-                <Animated.View style={animatedStyle}>
-                    {
-                        React.createElement(currentComponent)
-                    }
-                </Animated.View> 
-            </TouchableWithoutFeedback> 
-        </SafeAreaView>
-    );
+            <Animated.View style={this.animatedStyle}>
+              <Layer />
+                {
+                  React.createElement(this.state.steps[this.state.currentStep].component)
+                }
+            </Animated.View> 
+          </SafeAreaView>
+        )
+      }
 }
+       
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: 'center',
-    },
+  container: {
+      position: 'relative',
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      color: 'rgb(255, 0, 0)',
+      opacity: 0.8,
+      width: '100%',
+      marginHorizontal: 'auto',
+      height: 100,
+  },
 });
+
+const mapStateToProps = state => {
+    return {
+        currentStep: state.userReducer.currentStep,
+    };
+};
+
+
+export default connect(mapStateToProps)(Main);
