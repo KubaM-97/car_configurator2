@@ -29,13 +29,19 @@ class Main extends Component {
         {id: 5, component: Armchairs},
         {id: 6, component: UpholsteriesColor},
         {id: 7, component: Accessories},
-        // {id: 8, component: Summary}
+        {id: 8, component: Summary}
       ],
+      dispatch: this.props.dispatch,
       currentStep: this.props.currentStep,
       rotateAnimation: new Animated.Value(0),
     }
-    async shouldComponentUpdate(nextProps, b){
-      await Animated.timing(this.state.rotateAnimation, {
+
+    componentDidMount(){
+      this.state.dispatch((setStepsLength(this.state.steps.length - 1)))
+    }
+
+    shouldComponentUpdate(nextProps){
+      Animated.timing(this.state.rotateAnimation, {
         toValue: -1,
         duration: 200,
         useNativeDriver: true,
@@ -71,8 +77,8 @@ class Main extends Component {
     render() {
       return(
         <SafeAreaView style={styles.container}>
-            <Animated.View style={this.animatedStyle}>
               <Layer />
+            <Animated.View style={this.animatedStyle}>
                 {
                   React.createElement(this.state.steps[this.state.currentStep].component)
                 }
@@ -103,5 +109,8 @@ const mapStateToProps = state => {
     };
 };
 
+const mapDispatchToProps = dispatch => ({
+  dispatch
+})
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
