@@ -45,7 +45,7 @@ class Main extends Component {
         toValue: -1,
         duration: 200,
         useNativeDriver: true,
-      }).start(async () => { 
+      }).start(() => { 
         if(this.state.currentStep !== nextProps.currentStep) this.setState({currentStep:nextProps.currentStep})
         this.state.rotateAnimation.setValue(1);
         Animated.timing(this.state.rotateAnimation, {
@@ -57,7 +57,7 @@ class Main extends Component {
           this.state.rotateAnimation.setValue(0);
         });
       });
-      return false
+      return true
     }  
       
     interpolateRotating = () => {
@@ -76,14 +76,12 @@ class Main extends Component {
   
     render() {
       return(
-        <SafeAreaView style={styles.container}>
+            <Animated.View style={[styles.container, this.animatedStyle]}>
               <Layer />
-            <Animated.View style={this.animatedStyle}>
                 {
                   React.createElement(this.state.steps[this.state.currentStep].component)
                 }
             </Animated.View> 
-          </SafeAreaView>
         )
       }
 }

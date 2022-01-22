@@ -14,9 +14,9 @@ export default function Item(props) {
     const { selectedItems } = useSelector(state => state.userReducer);
     const isSelected = selectedItems.some(el => el?.category === item.category && el?.name === item.name )
     return (
-        <TouchableOpacity>
+        <TouchableOpacity style={styles.item}>
             <Pressable onPress={() => dispatch(setSelectedItems(item))}>
-                <View style={[{...styles.item, backgroundColor: isSelected ? '#3264a8' : 'black'}]}>
+                <View style={ {backgroundColor: isSelected ? '#3264a8' : 'black'}}>
                     <Layer />
                     <Image source={img} style={styles.itemImage} />
                     <Text style={[globalStyles.text, styles.itemText]}>{name}</Text>
@@ -33,12 +33,8 @@ export default function Item(props) {
 
 const styles = StyleSheet.create({
     item: {
-        height: '86%',
         marginHorizontal: 7,
-        flexDirection: 'column',
-        justifyContent: 'space-evenly',
         alignItems: 'center', 
-        alignSelf: 'center'
     },
     itemText: {
         fontSize: 14,

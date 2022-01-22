@@ -34,7 +34,6 @@ const styles = StyleSheet.create({
   },
   container: {
     width: '80%',
-    marginTop: '10%', 
     height: '80%',
   },
   items: {
