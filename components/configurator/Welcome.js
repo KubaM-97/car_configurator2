@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
     container: {
         width: '90%',
         height: '80%',
-        marginTop: '10%',
         justifyContent: 'space-between',
     },
     text: {
