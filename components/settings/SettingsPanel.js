@@ -1,19 +1,27 @@
-import React from 'react';
+import React, { forwardRef, useImperativeHandle, useState } from 'react';
 import { StyleSheet, View, Modal } from 'react-native';
 
 import Languages from './Languages';
 
-export default function SettingsPanel(props) {
-    const { isSettingsPanelVisible, onHideSettingsPanel } = props; 
-    
+
+export default SettingsPanel = forwardRef((props, ref) => {
+    // const { isSettingsPanelVisible, onHideSettingsPanel } = props; 
+    const [isSettingsPanelVisible, setToggle] = useState(false);
+
+    useImperativeHandle(ref, () => ({
+      alterToggle() {
+        setToggle(true);
+      },
+    }));
+
     return (
-        <Modal transparent={true} visible={isSettingsPanelVisible} animationType="slide" onRequestClose={onHideSettingsPanel}>
+        <Modal transparent={true} visible={isSettingsPanelVisible} animationType="slide" onRequestClose={()=>setToggle(false)}>
             <View style={styles.settingsPanel}>
                 <Languages/>
             </View>
         </Modal>
     );
-}
+})
 
 const styles = StyleSheet.create({
     settingsPanel: {

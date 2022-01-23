@@ -1,24 +1,62 @@
-import React, { useState } from 'react';
-import { View } from 'react-native';
+import React, { useState, useRef } from 'react';
+
+import { Animated, View, StyleSheet, TouchableOpacity } from "react-native";
+import { Ionicons } from '@expo/vector-icons';
+
 import i18n from 'react-native-i18n';
 import { useSelector } from 'react-redux'
 
-import SettingsButton from "~/components/settings/SettingsButton"
 import SettingsPanel from "~/components/settings/SettingsPanel"
 
 export default function Settings() {
     const { ourLanguage } = useSelector(state => state.userReducer);
     i18n.locale = ourLanguage;
 
-    const [ isSettingsPanelVisible, setShowSettingsPanel ] = useState(false);
-    
-    const onShowSettingsPanel = () => {setShowSettingsPanel(true)}
-    const onHideSettingsPanel = () => {setShowSettingsPanel(false)}
+    const [rotateAnimation, setRotateAnimation] = useState(new Animated.Value(0));
+  
+    const handleAnimation = () => {
+      Animated.timing(rotateAnimation, {
+        toValue: 1,
+        duration: 1200,
+        useNativeDriver: true
+      }).start(() => {
+        rotateAnimation.setValue(0);
+      });
+    };
+  
+    const interpolateRotating = rotateAnimation.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '540deg'],
+    });
+  
+    const animatedStyle = {
+      transform: [
+        {
+          rotate: interpolateRotating,
+        },
+      ],
+    };
 
+    const openSettingsPanel = () => {
+        handleAnimation();
+        settingsPanelRef.current.alterToggle();
+    }
+    const settingsPanelRef = useRef(null);
+    
     return (
         <View>
-            <SettingsButton onShowSettingsPanel={onShowSettingsPanel}/>
-            <SettingsPanel isSettingsPanelVisible={isSettingsPanelVisible} onHideSettingsPanel={onHideSettingsPanel}/>
+            <TouchableOpacity onPress={openSettingsPanel} style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}>
+                <Animated.View style={[styles.settingsButton, animatedStyle]}>
+                    <Ionicons color='lightblue' name="settings-outline" size={28} />
+                </Animated.View>
+            </TouchableOpacity>
+            <SettingsPanel ref={settingsPanelRef} />
         </View>
     );
 }
+
+const styles = StyleSheet.create({
+    settingsButton: {
+        marginRight: 40
+    }
+});
