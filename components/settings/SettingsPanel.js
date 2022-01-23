@@ -5,17 +5,17 @@ import Languages from './Languages';
 
 
 export default SettingsPanel = forwardRef((props, ref) => {
-    // const { isSettingsPanelVisible, onHideSettingsPanel } = props; 
-    const [isSettingsPanelVisible, setToggle] = useState(false);
+
+    const [isModalVisible, setModalVisible] = useState(false);
 
     useImperativeHandle(ref, () => ({
-      alterToggle() {
-        setToggle(true);
+      openModal() {
+        setModalVisible(true);
       },
     }));
 
     return (
-        <Modal transparent={true} visible={isSettingsPanelVisible} animationType="slide" onRequestClose={()=>setToggle(false)}>
+        <Modal transparent={true} visible={isModalVisible} animationType="slide" onRequestClose={()=>setModalVisible(false)}>
             <View style={styles.settingsPanel}>
                 <Languages/>
             </View>

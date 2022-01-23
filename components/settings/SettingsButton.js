@@ -3,7 +3,6 @@ import { Animated, Text, View, StyleSheet, Button, SafeAreaView, Easing, Touchab
 import { Ionicons } from '@expo/vector-icons';
   
 export default function SettingsButton(props) {
-  const { onSetShowSettingsPanel } = props;
   const [rotateAnimation, setRotateAnimation] = useState(new Animated.Value(0));
 
   const handleAnimation = () => {
@@ -14,7 +13,6 @@ export default function SettingsButton(props) {
     }).start(() => {
       rotateAnimation.setValue(0);
     });
-    onSetShowSettingsPanel
   };
 
   const interpolateRotating = rotateAnimation.interpolate({
@@ -29,10 +27,13 @@ export default function SettingsButton(props) {
       },
     ],
   };
-
+  const openSettingsPanel = () => {
+    handleAnimation();
+    props.settingsPanelRef.openModal();
+  }
   return (
     <TouchableOpacity
-      onPress={async () => handleAnimation()}
+      onPress={openSettingsPanel}
       style={{ flex: 1, justifyContent: 'center', alignSelf: 'center' }}
     >
       <Animated.View style={[styles.settingsButton, animatedStyle]}>
@@ -44,6 +45,6 @@ export default function SettingsButton(props) {
 
 const styles = StyleSheet.create({
     settingsButton: {
-        paddingRight: 40
+        marginRight: 40
     }
 });
