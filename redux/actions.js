@@ -1,4 +1,5 @@
 export const SET_SELECTED_ITEMS = 'SET_SELECTED_ITEMS';
+export const SET_SELECTED_MULTI_ITEMS = 'SET_SELECTED_MULTI_ITEMS';
 export const SET_STEPS_LENGTH = 'SET_STEPS_LENGTH';
 export const SET_CURRENT_STEP = 'SET_CURRENT_STEP';
 export const SET_LANGUAGE = 'SET_LANGUAGE';
@@ -9,6 +10,12 @@ export const setSelectedItems = item => dispatch => {
         payload: item
     })
 }
+export const setSelectedMultiItems = item => dispatch => {
+    dispatch({
+        type: SET_SELECTED_MULTI_ITEMS,
+        payload: item
+    })
+}
 
 export const setStepsLength = stepsLength => dispatch => {
     dispatch({
@@ -16,6 +23,7 @@ export const setStepsLength = stepsLength => dispatch => {
         payload: stepsLength
     })
 }
+
 export const setLanguage = stepsLength => dispatch => {
     dispatch({
         type: SET_LANGUAGE,

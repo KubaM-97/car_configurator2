@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Pressable, Text } from 'react-native';
+import { TouchableHighlight, Pressable, Text } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import I18n from '~/lang/i18n';
 
@@ -12,10 +12,10 @@ export default function ContinueButton(props) {
   const { currentStep } = useSelector(state => state.userReducer);
 
   return (
-      <TouchableOpacity style={globalStyles.button}>
+      <TouchableHighlight style={globalStyles.button}>
           <Pressable onPress={()=>dispatch(setCurrentStep(currentStep+1))}>
               <Text style={globalStyles.text}>{ title || I18n.t('continue')}</Text>
           </Pressable>
-      </TouchableOpacity>
+      </TouchableHighlight>
   )
 }

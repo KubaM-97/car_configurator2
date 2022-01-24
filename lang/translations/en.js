@@ -62,6 +62,6 @@ export default {
     // accessories
     LED: 'LED',
     soundSystem: 'Sound System',
-    sportsSuspension: 'Sports Suspension',
+    sportsSuspension: 'Sport Suspension',
 
 }
